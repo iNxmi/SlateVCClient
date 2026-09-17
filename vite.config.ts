@@ -1,4 +1,5 @@
 import {defineConfig} from 'vite'
+import { fileURLToPath, URL } from 'node:url';
 import react from '@vitejs/plugin-react'
 import generouted from "@generouted/react-router/plugin"
 import tailwindcss from '@tailwindcss/vite'
@@ -9,4 +10,9 @@ export default defineConfig({
         generouted(),
         tailwindcss()
     ],
+    resolve: {
+        alias: {
+            "@components": fileURLToPath(new URL("./src/components", import.meta.url))
+        }
+    }
 })

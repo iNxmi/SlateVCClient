@@ -1,27 +1,32 @@
-import {ChevronDown, Hash} from "lucide-react"
+import {ChevronDown, Hash, Mic, Headphones, Settings, User, Wifi, Monitor} from "lucide-react"
 import Card from "./Card"
+import Separator from "./Separator"
+import Button from "./Button"
+import {Link} from "react-router"
 
-function TextChannel({name}:{name:string}) {
-    return <div className="flex gap-1 bg-pink-500/10 hover:bg-red-500/25 rounded-lg p-1 select-none cursor-pointer">
-        <Hash/>
-        <div>{name}</div>
-    </div>
+function TextChannel({name}: { name: string }) {
+    return <Link to={`/server/text-channel/${name}`} className="flex flex-col">
+        <Button className="flex gap-1">
+            <Hash/>
+            <div>{name}</div>
+        </Button>
+    </Link>
 }
 
-function ServerCard({className = ""}: {className?: string}) {
+function ServerCard({className = ""}: { className?: string }) {
     return <div className={`flex overflow-scroll w-full ${className}`}>
         <div className="grow flex flex-col gap-3">
-            <Card className="shrink flex gap-1 justify-center">
+            <Card className="shrink flex gap-1 justify-between">
                 <div className="flex flex-col justify-center">
                     <h2 className="text-xl font-bold">Server Name</h2>
                 </div>
 
-                <div className="flex flex-col justify-center">
+                <Button className="flex flex-col justify-center">
                     <ChevronDown/>
-                </div>
+                </Button>
             </Card>
 
-            <Card className="grow flex flex-col gap-2">
+            <Card className="grow flex flex-col gap-2 overflow-scroll">
                 <TextChannel name="hinterräume"/>
                 <TextChannel name="allgemein"/>
                 <TextChannel name="spieleliste"/>
@@ -39,31 +44,67 @@ function ServerCard({className = ""}: {className?: string}) {
 }
 
 function ServerIcon() {
-    return <Card className="aspect-square rounded-3xl flex justify-center">
+    return <Button className="aspect-square flex justify-center p-3">
         <div className="flex flex-col justify-center">
-            name
+            uwu
         </div>
-    </Card>
+    </Button>
 }
 
 function ServerList() {
-    return <div className="flex flex-col gap-3">
+    return <Card className="flex flex-col gap-3 p-2">
         <ServerIcon/>
         <ServerIcon/>
         <ServerIcon/>
         <ServerIcon/>
         <ServerIcon/>
         <ServerIcon/>
-    </div>
+    </Card>
 }
 
 function UserCard() {
-    return <Card>
-        <div>Stream Status</div>
-        <div className="border"></div>
-        <div>Connection Status</div>
-        <div className="border"></div>
-        <div>Username</div>
+    return <Card className="flex flex-col gap-0 p-0 justify-evenly">
+        <div className="min-h-8 flex flex-col justify-center p-2 gap-3">
+            <div className="flex gap-3">
+                <Monitor/>
+                <p>Stream Status</p>
+            </div>
+        </div>
+
+        <Separator/>
+
+        <div className="min-h-8 flex flex-col justify-center p-2 gap-3">
+            <div className="flex gap-3">
+                <Wifi/>
+                <p>Connection Status</p>
+            </div>
+        </div>
+
+        <Separator/>
+
+        <div className="min-h-8 flex flex-col justify-center p-2">
+            <div className="flex gap-1">
+                <div className="grow flex gap-3">
+                    <User/>
+                    <p>Username</p>
+                </div>
+                <Button className="aspect-square flex justify-center">
+                    <div className="flex flex-col justify-center">
+                        <Mic size={20}/>
+                    </div>
+                </Button>
+                <Button className="aspect-square flex justify-center">
+                    <div className="flex flex-col justify-center">
+                        <Headphones size={20}/>
+                    </div>
+                </Button>
+                <Button className="aspect-square flex justify-center">
+                    <div className="flex flex-col justify-center">
+                        <Settings size={20}/>
+                    </div>
+                </Button>
+            </div>
+        </div>
     </Card>
 }
 

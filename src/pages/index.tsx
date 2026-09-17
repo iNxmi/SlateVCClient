@@ -1,3 +1,7 @@
 export default function Index() {
-    return <div>Hello World! This is index.tsx</div>
+    return <div className="grow flex flex-col justify-center">
+        <span className="font-bold text-center text-3xl flex justify-center animate-pulse select-none">
+            Welcome to {"<discord_clone>"}
+        </span>
+    </div>
 }
