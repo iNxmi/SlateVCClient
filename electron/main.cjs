@@ -4,11 +4,12 @@ const path = require("path")
 const isDev = !app.isPackaged
 
 function createWindow() {
-    const win = new BrowserWindow({
+    const window = new BrowserWindow({
         width: 1200,
         height: 800,
         minWidth: 800,
         minHeight: 600,
+        icon: path.join(__dirname, "../public/favicon.ico"),
         webPreferences: {
             preload: path.join(__dirname, 'preload.cjs'),
             nodeIntegration: false,
@@ -16,11 +17,13 @@ function createWindow() {
         }
     })
 
+    window.removeMenu()
+
     if (isDev) {
-        win.loadURL("http://localhost:5173")
-        win.webContents.openDevTools()
+        window.loadURL("http://localhost:5173")
+        window.webContents.openDevTools()
     } else {
-        win.loadFile(path.join(__dirname, "../dist/index.html"))
+        window.loadFile(path.join(__dirname, "../dist/index.html"))
     }
 }
 

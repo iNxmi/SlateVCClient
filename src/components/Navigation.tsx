@@ -28,7 +28,7 @@ function TextChannel({name}: { name: string }) {
 }
 
 function ServerCard({className = ""}: { className?: string }) {
-    return <Card className={`flex overflow-scroll w-full ${className}`}>
+    return <Card className={`flex w-full ${className}`}>
         <div className="grow flex flex-col gap-3">
             <div className="shrink flex gap-1 justify-between">
                 <div className="flex flex-col justify-center">
@@ -42,7 +42,7 @@ function ServerCard({className = ""}: { className?: string }) {
 
             <Separator/>
 
-            <div className="grow flex flex-col gap-2 overflow-scroll">
+            <div className="grow flex flex-col gap-2">
                 <TextChannel name="hinterräume"/>
                 <TextChannel name="allgemein"/>
                 <TextChannel name="spieleliste"/>

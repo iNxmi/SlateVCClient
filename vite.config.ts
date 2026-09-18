@@ -12,6 +12,7 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
+            "@public": fileURLToPath(new URL("./public", import.meta.url)),
             "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
             "@themes": fileURLToPath(new URL("./src/themes", import.meta.url)),
         }
