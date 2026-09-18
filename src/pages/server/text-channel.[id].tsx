@@ -5,7 +5,7 @@ import Input from "@components/Input"
 import Button from "@components/Button"
 import Separator from "@components/Separator"
 
-function Container({username, messages}:{username:string, messages: string[]})  {
+function Container({username, messages}: { username: string, messages: string[] }) {
     return <div className="flex gap-2">
 
         <div>
@@ -36,14 +36,26 @@ export default function TextChannel() {
     const {id} = useParams()
 
     const [history, setHistory] = useState([
-        {username:"server", messages: ["meow", "67", "hello world", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."]},
-        {username:"user1", messages: ["uwu", "c++ user"]},
-        {username:"server", messages: ["test"]}
+        {username: "server", messages: ["meow", "67", "hello world", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."]},
+        {username: "user1", messages: ["uwu", "c++ user"]},
+        {username: "server", messages: ["test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test","test"]}
     ])
 
     const [message, setMessage] = useState("")
 
-    return <div className="grow flex flex-col gap-3">
+    function sendMessage() {
+        const last = history[history.length - 1]
+        if (last.username == "memphis") {
+            const result = {username: "memphis", messages: [...last.messages, message]}
+            setHistory([...history.slice(0, -1), result])
+        } else {
+            setHistory([...history, {username: "memphis", messages: [message]}])
+        }
+
+        setMessage("")
+    }
+
+    return <div className="grow flex flex-col gap-3 min-h-0 min-w-0">
         <div className="font-bold text-center">
             <div className="flex gap-1 justify-center">
                 <Hash/>
@@ -55,7 +67,7 @@ export default function TextChannel() {
 
         <Separator/>
 
-        <div className="grow flex flex-col gap-1">
+        <div className="grow flex flex-col gap-1 overflow-y-scroll">
             {history.map((entry, _) => (
                 <Container username={entry.username} messages={entry.messages}/>
             ))}
@@ -63,27 +75,25 @@ export default function TextChannel() {
 
         <Separator/>
 
-        <div className="flex gap-3">
-            <Input className="grow" placeholder={`Message #${id}`} value={message} onChange={(event) => {
-                setMessage(event.target.value)
-            }}/>
-            <Button className="aspect-square flex justify-center" onClick={() => {
-                const last = history[history.length - 1]
+            <form className="flex gap-1"
+                  onSubmit={(event) => {
+                      event.preventDefault()
+                      sendMessage()
+                  }}>
+                <Input
+                    className="grow"
+                    placeholder={`Message #${id}`}
+                    value={message}
+                    onChange={(event) => {
+                        setMessage(event.target.value)
+                    }}
+                />
+                <Button className="aspect-square flex justify-center" type="submit">
+                    <div className="flex flex-col justify-center">
+                        <Send size={20}/>
+                    </div>
+                </Button>
+            </form>
 
-
-                if(last.username == "memphis") {
-                    const result = {username: "memphis", messages: [...last.messages, message]}
-                    setHistory([...history.slice(0, -1), result])
-                } else {
-                    setHistory([...history, {username: "memphis", messages: [message]}])
-                }
-
-                setMessage("")
-            }}>
-                <div className="flex flex-col justify-center">
-                    <Send size={20}/>
-                </div>
-            </Button>
-        </div>
     </div>
 }

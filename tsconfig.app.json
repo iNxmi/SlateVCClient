@@ -22,10 +22,9 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
 
-    "baseUrl": ".",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@themes/*": ["src/themes/*"],
+      "@components/*": ["./src/components/*"],
+      "@themes/*": ["./src/themes/*"],
     }
   },
   "include": ["src"]
