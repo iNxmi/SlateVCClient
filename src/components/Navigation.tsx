@@ -149,8 +149,8 @@ function UserCard() {
 }
 
 export default function Navigation() {
-    return <div className="flex flex-col gap-3 resize-x overflow-auto w-96 h-full">
-        <div className="flex gap-3 grow justify-left">
+    return <div className="flex flex-col gap-1 resize-x overflow-auto w-96 h-full">
+        <div className="flex gap-1 grow justify-left">
             <ServerList/>
             <ServerCard className="grow"/>
         </div>

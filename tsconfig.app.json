@@ -26,7 +26,6 @@
     "paths": {
       "@components/*": ["src/components/*"],
       "@themes/*": ["src/themes/*"],
-      "@public/*": ["src/public/*"],
     }
   },
   "include": ["src"]
