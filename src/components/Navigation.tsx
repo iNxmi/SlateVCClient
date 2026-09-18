@@ -1,22 +1,36 @@
-import {ChevronDown, Hash, Mic, Headphones, Settings, User, Wifi, Monitor} from "lucide-react"
+import {ChevronDown, Hash, Mic, Headphones, Settings, User, Wifi, Monitor, Home, Volume2} from "lucide-react"
 import Card from "./Card"
 import Separator from "./Separator"
 import Button from "./Button"
 import {Link} from "react-router"
+import type {ReactNode} from "react";
+
+function VoiceChannel({name}: { name: string }) {
+    return <Link to={`/server/voice-channel/${name}`} className="flex flex-col">
+        <Button className="flex gap-2 text-left">
+            <div className="flex flex-col justify-center">
+                <Volume2/>
+            </div>
+            <div>{name}</div>
+        </Button>
+    </Link>
+}
 
 function TextChannel({name}: { name: string }) {
     return <Link to={`/server/text-channel/${name}`} className="flex flex-col">
-        <Button className="flex gap-1">
-            <Hash/>
+        <Button className="flex gap-2 text-left">
+            <div className="flex flex-col justify-center">
+                <Hash/>
+            </div>
             <div>{name}</div>
         </Button>
     </Link>
 }
 
 function ServerCard({className = ""}: { className?: string }) {
-    return <div className={`flex overflow-scroll w-full ${className}`}>
+    return <Card className={`flex overflow-scroll w-full ${className}`}>
         <div className="grow flex flex-col gap-3">
-            <Card className="shrink flex gap-1 justify-between">
+            <div className="shrink flex gap-1 justify-between">
                 <div className="flex flex-col justify-center">
                     <h2 className="text-xl font-bold">Server Name</h2>
                 </div>
@@ -24,9 +38,11 @@ function ServerCard({className = ""}: { className?: string }) {
                 <Button className="flex flex-col justify-center">
                     <ChevronDown/>
                 </Button>
-            </Card>
+            </div>
 
-            <Card className="grow flex flex-col gap-2 overflow-scroll">
+            <Separator/>
+
+            <div className="grow flex flex-col gap-2 overflow-scroll">
                 <TextChannel name="hinterräume"/>
                 <TextChannel name="allgemein"/>
                 <TextChannel name="spieleliste"/>
@@ -38,27 +54,51 @@ function ServerCard({className = ""}: { className?: string }) {
                 <TextChannel name="zitate"/>
                 <TextChannel name="asiatische-delikatessen"/>
                 <TextChannel name="kunst-unterricht"/>
-            </Card>
+                <VoiceChannel name="Allgemein: Die Rückkehr"/>
+            </div>
         </div>
-    </div>
+    </Card>
 }
 
-function ServerIcon() {
-    return <Button className="aspect-square flex justify-center p-3">
+function ServerIcon({children}: { children: ReactNode }) {
+    return <Button className="aspect-square flex justify-center w-12">
         <div className="flex flex-col justify-center">
-            uwu
+            {children}
         </div>
     </Button>
 }
 
 function ServerList() {
     return <Card className="flex flex-col gap-3 p-2">
-        <ServerIcon/>
-        <ServerIcon/>
-        <ServerIcon/>
-        <ServerIcon/>
-        <ServerIcon/>
-        <ServerIcon/>
+        <Link to="/" className="flex justify-center">
+            <ServerIcon>
+                <Home size={30}/>
+            </ServerIcon>
+        </Link>
+
+        <Separator/>
+
+        <ServerIcon>
+            <div className="font-bold">A</div>
+        </ServerIcon>
+        <ServerIcon>
+            <div className="font-bold">B</div>
+        </ServerIcon>
+        <ServerIcon>
+            <div className="font-bold">C</div>
+        </ServerIcon>
+        <ServerIcon>
+            <div className="font-bold">D</div>
+        </ServerIcon>
+        <ServerIcon>
+            <div className="font-bold">E</div>
+        </ServerIcon>
+        <ServerIcon>
+            <div className="font-bold">F</div>
+        </ServerIcon>
+        <ServerIcon>
+            <div className="font-bold">G</div>
+        </ServerIcon>
     </Card>
 }
 
@@ -109,7 +149,7 @@ function UserCard() {
 }
 
 export default function Navigation() {
-    return <div className="flex flex-col gap-3 resize-x overflow-auto w-64 h-full">
+    return <div className="flex flex-col gap-3 resize-x overflow-auto w-96 h-full">
         <div className="flex gap-3 grow justify-left">
             <ServerList/>
             <ServerCard className="grow"/>

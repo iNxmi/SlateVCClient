@@ -12,7 +12,11 @@ export default defineConfig({
     ],
     resolve: {
         alias: {
-            "@components": fileURLToPath(new URL("./src/components", import.meta.url))
+            "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
+            "@themes": fileURLToPath(new URL("./src/themes", import.meta.url)),
         }
+    },
+    server: {
+        open: true
     }
 })
