@@ -22,11 +22,14 @@ function Server({name}: { name: string}) {
                         {name.charAt(0).toUpperCase()}
                     </Container>
                 </Tooltip.Trigger>
-                <Tooltip.Content side="right" sideOffset={16}>
-                    <Card>
-                        {name}
-                    </Card>
-                </Tooltip.Content>
+                <Tooltip.Portal>
+                    <Tooltip.Content side="right" sideOffset={16}>
+                        <Tooltip.Arrow/>
+                        <Card className="bg-background text-text">
+                            {name}
+                        </Card>
+                    </Tooltip.Content>
+                </Tooltip.Portal>
             </Tooltip.Root>
         </Tooltip.Provider>
     </Link>

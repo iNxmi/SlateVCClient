@@ -1,5 +1,7 @@
+import Card from "@components/Card"
+
 export default function Server() {
-    return <div>
-        opsiudgfoiusdfg
-    </div>
+    return <Card className="grow">
+        <div></div>
+    </Card>
 }

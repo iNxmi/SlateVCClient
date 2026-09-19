@@ -1,5 +1,6 @@
 import {Square, X, Minus} from "lucide-react"
 import type {ReactNode} from "react"
+import {useLocation} from "react-router-dom"
 import Card from "@components/Card"
 
 function Button({children, onClick}: { children: ReactNode, onClick: any }) {
@@ -20,10 +21,18 @@ export default function TitleBar() {
     if (!isElectron)
         return null
 
-    return <Card className="flex bg-foreground p-1 select-none [-webkit-app-region:drag]">
-        <div className="flex-1 flex justify-start gap-1">
+    const location = useLocation()
+    const url = window.location.href
 
+    return <Card className="flex bg-foreground p-1 select-none [-webkit-app-region:drag]">
+        <div className="flex-1">
+            <button className="flex justify-start gap-1 hover:bg-highlight [-webkit-app-region:no-drag] rounded-lg" onClick={() => {navigator.clipboard.writeText(url)}}>
+                <div className="flex flex-col justify-center p-1 font-bold">
+                    SlateVC
+                </div>
+            </button>
         </div>
+
         <div className="flex-1 flex justify-end gap-1">
             <Button onClick={window.electronAPI.minimize}>
                 <Minus/>

@@ -7,9 +7,9 @@ export default function ServerLayout() {
     const {id_server} = useParams()
 
     return <div className="grow flex gap-1 min-h-0 max-h-full min-w-0 max-w-full">
-        <div className="flex flex-col w-96 resize-x grow">
+        <div className="flex flex-col w-96 resize-x">
             <Navigation>
-                <ServerCard/>
+                <ServerCard name={id_server}/>
             </Navigation>
         </div>
         <Outlet/>

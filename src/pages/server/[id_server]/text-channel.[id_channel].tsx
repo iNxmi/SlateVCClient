@@ -1,15 +1,14 @@
 import {useParams} from "react-router-dom"
-import {useState} from "react"
+import {useState, useRef, useEffect} from "react"
 import {Send, Hash} from "lucide-react"
 import Input from "@components/Input.tsx"
 import Button from "@components/Button.tsx"
 import Separator from "@components/Separator.tsx"
 import {ScrollArea} from "radix-ui"
-import Card from "@components/Card"
+import Card from "@components/Card.tsx"
 
 function Container({username, messages}: { username: string, messages: string[] }) {
     return <div className="flex gap-2">
-
         <div>
             <div className="aspect-square w-11 bg-foreground rounded-xl flex justify-center m-1.5">
                 <div className="flex flex-col justify-center font-bold select-none">
@@ -45,6 +44,11 @@ export default function TextChannel() {
 
     const [message, setMessage] = useState("")
 
+    const bottomRef = useRef<HTMLDivElement>(null)
+    useEffect(()=>{
+        bottomRef.current?.scrollIntoView({behavior: "instant"})
+    }, [history])
+
     function sendMessage() {
         const last = history[history.length - 1]
         if (last.username == "memphis") {
@@ -76,6 +80,7 @@ export default function TextChannel() {
                         <Container username={entry.username} messages={entry.messages}/>
                     ))}
                 </div>
+                <div ref={bottomRef}></div>
             </ScrollArea.Viewport>
             <ScrollArea.Scrollbar orientation="vertical" className="w-1">
                 <ScrollArea.Thumb className="bg-foreground rounded-full"/>
@@ -89,6 +94,7 @@ export default function TextChannel() {
                   event.preventDefault()
                   sendMessage()
               }}>
+
             <Input
                 className="grow"
                 placeholder={`Message #${id_channel}`}
