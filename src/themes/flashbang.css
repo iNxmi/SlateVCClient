@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+@theme {
+    --color-foreground: color-mix(in srgb, var(--color-black) 5%, transparent);
+    --color-background: var(--color-white);
+    --color-highlight: color-mix(in srgb, var(--color-black) 20%, transparent);
+    --color-text: var(--color-black);
+}

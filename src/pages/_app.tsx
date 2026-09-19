@@ -7,11 +7,11 @@ export default function Layout() {
     return (
         <div className="text-text bg-background flex flex-col min-h-svh max-h-svh min-w-svw max-w-svw p-1 gap-1 overflow-hidden">
             <TitleBar/>
-            <div className="grow flex gap-1 min-h-0 min-w-0">
-                <div className="flex-col">
+            <div className="grow flex gap-1 min-h-0 max-h-full min-w-0 max-w-full">
+                <div className="flex flex-col">
                     <Navigation/>
                 </div>
-                <Card className="grow flex flex-col min-h-0 min-w-0">
+                <Card className="grow flex flex-col min-h-0 max-h-full min-w-0 max-w-full">
                     <Outlet/>
                 </Card>
             </div>
