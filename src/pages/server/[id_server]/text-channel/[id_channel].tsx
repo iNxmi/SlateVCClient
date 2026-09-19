@@ -1,10 +1,11 @@
 import {useParams} from "react-router-dom"
 import {useState} from "react"
 import {Send, Hash} from "lucide-react"
-import Input from "@components/Input"
-import Button from "@components/Button"
-import Separator from "@components/Separator"
+import Input from "@components/Input.tsx"
+import Button from "@components/Button.tsx"
+import Separator from "@components/Separator.tsx"
 import {ScrollArea} from "radix-ui"
+import Card from "@components/Card"
 
 function Container({username, messages}: { username: string, messages: string[] }) {
     return <div className="flex gap-2">
@@ -34,7 +35,7 @@ function Container({username, messages}: { username: string, messages: string[] 
 
 
 export default function TextChannel() {
-    const {id} = useParams()
+    const {id_channel} = useParams()
 
     const [history, setHistory] = useState([
         {username: "server", messages: ["meow", "67", "hello world", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."]},
@@ -56,12 +57,12 @@ export default function TextChannel() {
         setMessage("")
     }
 
-    return <div className="grow flex flex-col gap-3 min-h-0 max-h-full min-w-0 max-w-full">
+    return <Card className="grow flex flex-col gap-3 min-h-0 max-h-full min-w-0 max-w-full">
         <div className="font-bold text-center">
             <div className="flex gap-1 justify-center">
                 <Hash/>
                 <div className="font-bold">
-                    {id}
+                    {id_channel}
                 </div>
             </div>
         </div>
@@ -90,7 +91,7 @@ export default function TextChannel() {
               }}>
             <Input
                 className="grow"
-                placeholder={`Message #${id}`}
+                placeholder={`Message #${id_channel}`}
                 value={message}
                 onChange={(event) => {
                     setMessage(event.target.value)
@@ -103,5 +104,5 @@ export default function TextChannel() {
             </Button>
         </form>
 
-    </div>
+    </Card>
 }
