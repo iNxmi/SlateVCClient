@@ -1,5 +1,5 @@
 import {Navigate} from "react-router-dom"
 
 export default function Route() {
-    return <Navigate to={"/dashboard"} replace/>
+    return <Navigate to={"/settings"} replace/>
 }

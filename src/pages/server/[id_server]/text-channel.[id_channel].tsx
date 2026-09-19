@@ -39,7 +39,7 @@ export default function TextChannel() {
     const [history, setHistory] = useState([
         {username: "server", messages: ["meow", "67", "hello world", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."]},
         {username: "user1", messages: ["uwu", "c++ user"]},
-        {username: "server", messages: ["test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test", "test"]}
+        {username: "server", messages: ["est", "test", "testest", "test", "test", "test", "test", "test", "test", "test", "test", "test"]}
     ])
 
     const [message, setMessage] = useState("")
@@ -73,7 +73,7 @@ export default function TextChannel() {
 
         <Separator/>
 
-        <ScrollArea.Root className="min-h-0 max-h-full min-w-0 max-w-full">
+        <ScrollArea.Root className="grow min-h-0 max-h-full min-w-0 max-w-full">
             <ScrollArea.Viewport className="min-h-0 max-h-full min-w-0 max-w-full">
                 <div className="grow flex flex-col gap-1 min-h-0 max-h-full min-w-0 max-w-full">
                     {history.map((entry, _) => (

@@ -1,12 +1,8 @@
 import {Outlet} from "react-router-dom"
-import {useParams} from "react-router-dom"
-import ServerCard from "@components/ServerCard"
 import ServerList from "@components/ServerList"
-import UserCard from "@components/UserCard"
+import Card from "@components/Card"
 
 export default function ServerLayout() {
-    const {id_server} = useParams()
-
     return <div className="grow flex gap-1 min-h-0 max-h-full min-w-0 max-w-full">
         <div className="flex flex-col w-96 resize-x">
 
@@ -14,9 +10,8 @@ export default function ServerLayout() {
             <div className="grow flex flex-col gap-1">
                 <div className="grow flex gap-1">
                     <ServerList/>
-                    <ServerCard name={id_server}/>
+                    <Card className="grow"><div></div></Card>
                 </div>
-                <UserCard/>
             </div>
 
         </div>

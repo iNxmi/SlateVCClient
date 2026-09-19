@@ -3,7 +3,7 @@ import Card from "@components/Card"
 import {ScrollArea, Tooltip} from "radix-ui"
 import type {ReactNode} from "react"
 import Separator from "@components/Separator.tsx"
-import {Home, Plus} from "lucide-react"
+import {Plus, Settings} from "lucide-react"
 
 function Container({children}: { children:ReactNode }) {
     return <Card className="aspect-square flex justify-center w-12 hover:bg-highlight hover:cursor-pointer">
@@ -40,7 +40,7 @@ export default function ServerList() {
         <div className="flex flex-col gap-1">
             <Link to="/">
                 <Container>
-                    <Home size={30}/>
+                    <Settings size={30}/>
                 </Container>
             </Link>
             <button onClick={alert}>
